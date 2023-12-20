@@ -21,10 +21,13 @@ rails db:migrate
 
 To generate slugs in your Ruby application, you can include the has_slug method in your ActiveRecord models:
 
-class Post < ApplicationRecord
-  include SluggableRubby::ActiveRecord
-  has_slug :name #Use the method specifying the attribute
-end
+    class Post < ApplicationRecord
+
+      include SluggableRubby::ActiveRecord
+  
+      has_slug :name #Use the method specifying the attribute
+  
+    end
 
 Replace :name with the attribute you want to base the slug on
 
@@ -32,7 +35,7 @@ This allows flexibility in specifying which attribute should be used to generate
 
 example:
 
-Post.all
+    Post.all
 
 Post Load (0.2ms) SELECT "posts".\* FROM "posts"
 
@@ -54,7 +57,7 @@ Post Load (0.2ms) SELECT "posts".\* FROM "posts"
 Find models by slug:
 For convenience, you can use this.
 
-Post.find_by(slug: "im-groot")
+    Post.find_by(slug: "im-groot")
 
   Post Load (0.2ms) SELECT "posts".\* FROM "posts" WHERE "posts"."slug" = ? LIMIT ? [["slug", "im-groot"], ["LIMIT", 1]]
   
