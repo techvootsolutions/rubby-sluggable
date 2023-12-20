@@ -36,7 +36,6 @@ Post.all
 
 Post Load (0.2ms) SELECT "posts".\* FROM "posts"
 
-
   [#<Post:0x00007ff8ca673b60
   id: 1,
   title: "Im slug",
@@ -76,7 +75,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/techvootsolutions/rubby-sluggable
+Bug reports and pull requests are welcome on GitHub at https://github.com/techvootsolutions/rubby-sluggable/issues
 
 ## License
 
