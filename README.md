@@ -8,11 +8,11 @@ This modification will create a slug with an appended number (e.g., abc-1, abc-2
 
 To use this gem, add it to your Gemfile:
 
-gem 'sluggable_rubby'
+    gem 'sluggable_rubby'
 
 You can install the gem via:
 
-gem install sluggable_rubby
+    gem install sluggable_rubby
 
 ## Usage
 
