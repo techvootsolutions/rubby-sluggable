@@ -5,7 +5,7 @@ require_relative "lib/sluggable_rubby/version"
 Gem::Specification.new do |spec|
   spec.name = "sluggable_rubby"
   spec.version = SluggableRubby::VERSION
-  spec.authors = ["Bristina Christian"]
+  spec.authors = ["Techvoot solution"]
   spec.email = ["hello@techvoot.com"]
 
   spec.summary = "This creates a gem structure that can be used to generate unique slugs for ActiveRecord models in a Rails application based on specified attributes"
