@@ -22,8 +22,8 @@ rails db:migrate
 To generate slugs in your Ruby application, you can include the has_slug method in your ActiveRecord models:
 
 class Post < ApplicationRecord
-include SluggableRubby::ActiveRecord
-has_slug :name #Use the method specifying the attribute
+  include SluggableRubby::ActiveRecord
+  has_slug :name #Use the method specifying the attribute
 end
 
 Replace :name with the attribute you want to base the slug on
@@ -33,34 +33,35 @@ This allows flexibility in specifying which attribute should be used to generate
 example:
 
 Post.all
+
 Post Load (0.2ms) SELECT "posts".\* FROM "posts"
-[#<Post:0x00007ff8ca673b60
-id: 1,
-title: "Im slug",
-slug: "im-slug",
-created_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00,
-updated_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00>,
-#<Post:0x00007ff8ca673480
-id: 2,
-title: "Im slug",
-slug: "im-slug-1",
-created_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00,
-updated_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00>,
-]
+  [#<Post:0x00007ff8ca673b60
+  id: 1,
+  title: "Im slug",
+  slug: "im-slug",
+  created_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00,
+  updated_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00>,
+  #<Post:0x00007ff8ca673480
+  id: 2,
+  title: "Im slug",
+  slug: "im-slug-1",
+  created_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00,
+  updated_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00>,
+  ]
 
 Find models by slug:
 For convenience, you can use this.
 
 Post.find_by(slug: "im-groot")
-Post Load (0.2ms) SELECT "posts".\* FROM "posts" WHERE "posts"."slug" = ? LIMIT ? [["slug", "im-groot"], ["LIMIT", 1]]
-=> #<Post:0x00007f0c3d748970
-id: 1,
-blog_id: 1,
-title: "Im Groot",
-body: nil,
-slug: "im-groot",
-created_at: Tue, 12 Dec 2023 13:41:34.793823000 UTC +00:00,
-updated_at: Tue, 12 Dec 2023 13:41:34.793823000 UTC +00:00>
+  Post Load (0.2ms) SELECT "posts".\* FROM "posts" WHERE "posts"."slug" = ? LIMIT ? [["slug", "im-groot"], ["LIMIT", 1]]
+  => #<Post:0x00007f0c3d748970
+  id: 1,
+  blog_id: 1,
+  title: "Im Groot",
+  body: nil,
+  slug: "im-groot",
+  created_at: Tue, 12 Dec 2023 13:41:34.793823000 UTC +00:00,
+  updated_at: Tue, 12 Dec 2023 13:41:34.793823000 UTC +00:00>
 
 ## Development
 
@@ -70,7 +71,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at "https://github.com/techvootsolutions/rubby-sluggable.
+Bug reports and pull requests are welcome on GitHub at https://github.com/techvootsolutions/rubby-sluggable
 
 ## License
 
