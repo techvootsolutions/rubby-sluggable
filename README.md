@@ -53,6 +53,7 @@ Find models by slug:
 For convenience, you can use this.
 
 Post.find_by(slug: "im-groot")
+
   Post Load (0.2ms) SELECT "posts".\* FROM "posts" WHERE "posts"."slug" = ? LIMIT ? [["slug", "im-groot"], ["LIMIT", 1]]
   => #<Post:0x00007f0c3d748970
   id: 1,
