@@ -35,6 +35,8 @@ example:
 Post.all
 
 Post Load (0.2ms) SELECT "posts".\* FROM "posts"
+
+
   [#<Post:0x00007ff8ca673b60
   id: 1,
   title: "Im slug",
@@ -48,6 +50,7 @@ Post Load (0.2ms) SELECT "posts".\* FROM "posts"
   created_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00,
   updated_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00>,
   ]
+  
 
 Find models by slug:
 For convenience, you can use this.
@@ -55,6 +58,7 @@ For convenience, you can use this.
 Post.find_by(slug: "im-groot")
 
   Post Load (0.2ms) SELECT "posts".\* FROM "posts" WHERE "posts"."slug" = ? LIMIT ? [["slug", "im-groot"], ["LIMIT", 1]]
+  
   => #<Post:0x00007f0c3d748970
   id: 1,
   blog_id: 1,
