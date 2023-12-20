@@ -45,6 +45,7 @@ Post Load (0.2ms) SELECT "posts".\* FROM "posts"
   slug: "im-slug",
   created_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00,
   updated_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00>,
+  
   #<Post:0x00007ff8ca673480
   id: 2,
   title: "Im slug",
