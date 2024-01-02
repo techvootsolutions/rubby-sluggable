@@ -24,9 +24,9 @@ To generate slugs in your Ruby application, you can include the has_slug method 
     class Post < ApplicationRecord
 
       include SluggableRubby::ActiveRecord
-  
+
       has_slug :name #Use the method specifying the attribute
-  
+
     end
 
 Replace :name with the attribute you want to base the slug on
@@ -39,43 +39,67 @@ example:
 
 Post Load (0.2ms) SELECT "posts".\* FROM "posts"
 
-  [#<Post:0x00007ff8ca673b60
-  id: 1,
-  title: "Im slug",
-  slug: "im-slug",
-  created_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00,
-  updated_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00>,
-  
-  #<Post:0x00007ff8ca673480
-  id: 2,
-  title: "Im slug",
-  slug: "im-slug-1",
-  created_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00,
-  updated_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00>,
-  ]
-  
+[#<Post:0x00007ff8ca673b60
+id: 1,
+title: "Im slug",
+slug: "im-slug",
+created_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00,
+updated_at: Mon, 11 Dec 2023 10:26:11.827452000 UTC +00:00>,
+
+#<Post:0x00007ff8ca673480
+id: 2,
+title: "Im slug",
+slug: "im-slug-1",
+created_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00,
+updated_at: Mon, 11 Dec 2023 10:26:20.539649000 UTC +00:00>,
+]
 
 Find models by slug:
 For convenience, you can use this.
 
     Post.find_by(slug: "im-groot")
 
-  Post Load (0.2ms) SELECT "posts".\* FROM "posts" WHERE "posts"."slug" = ? LIMIT ? [["slug", "im-groot"], ["LIMIT", 1]]
-  
-  => #<Post:0x00007f0c3d748970
-  id: 1,
-  blog_id: 1,
-  title: "Im Groot",
-  body: nil,
-  slug: "im-groot",
-  created_at: Tue, 12 Dec 2023 13:41:34.793823000 UTC +00:00,
-  updated_at: Tue, 12 Dec 2023 13:41:34.793823000 UTC +00:00>
+Post Load (0.2ms) SELECT "posts".\* FROM "posts" WHERE "posts"."slug" = ? LIMIT ? [["slug", "im-groot"], ["LIMIT", 1]]
 
-## Development
+=> #<Post:0x00007f0c3d748970
+id: 1,
+blog_id: 1,
+title: "Im Groot",
+body: nil,
+slug: "im-groot",
+created_at: Tue, 12 Dec 2023 13:41:34.793823000 UTC +00:00,
+updated_at: Tue, 12 Dec 2023 13:41:34.793823000 UTC +00:00>
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Using multiple fields to create the slug:
+You want to use mutiple field as slug 'SluggableRubby" that can included in your Model.
+The has_slug method set up the attributes for slug generations and scope.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+When included the model, it triggers the before validation hook to generate and validate the slug.
+
+    rails g migration AddSelectColorToPost content:string comment:string
+    rails db:migarte
+
+    class Post < ApplicationRecord
+        belongs_to :blog
+
+        include SluggableRubby::ActiveRecord
+
+        has_slug :title, :body, :content, :comment
+    end
+
+    Post.create(title: "Happy", body: "New", content: "Year", comment: "2024", blog_id: 1)
+
+#<Post:0x00007fa012af7580
+id: 10,
+title: "Happy",
+body: "New",
+content: "Year",
+comment: "2024"
+slug: "happy-new-year-2024",
+blog_id: 1,
+created_at: Tue, 02 Jan 2024 09:42:08.556551000 UTC +00:00,
+updated_at: Tue, 02 Jan 2024 09:42:08.556551000 UTC +00:00>
+
 
 ## Contributing
 
